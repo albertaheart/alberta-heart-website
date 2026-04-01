@@ -1,0 +1,58 @@
+@import "tailwindcss";
+
+:root {
+  /* Main Colors */
+  --light-red: #bc1823;
+  --maroon: #560216;
+  --dark-blue: #0D203B;
+  --medium-blue: #0D566D;
+  --light-blue: #1B7895;
+  --grey: #E6E6E4;
+
+  /* Subteam Primary Colors */
+  --admin-primary: #49326b;
+  --mech-primary: #145da0;
+  --elec-primary: #bb3b17;
+  --bio-primary: #32620e;
+  --sim-primary: #ffd51e;
+
+  /* Subteam Secondary Colors */
+  --admin-secondary: #f8abeb;
+  --mech-secondary: #c0f0f7;
+  --elec-secondary: #fec583;
+  --bio-secondary: #f3fadc;
+  --sim-secondary: #fff9c7;
+}
+
+@theme inline {
+  /* Font Mapping */
+  --font-impact: var(--font-norwester);
+  --font-heading: var(--font-glacial);
+  --font-sans: var(--font-dm-sans)
+
+  /* Main Theme Mapping */
+  --color-light-red: var(--light-red);
+  --color-maroon: var(--maroon);
+  --color-dark-blue: var(--dark-blue);
+  --color-medium-blue: var(--medium-blue);
+  --color-light-blue: var(--light-blue);
+  --color-grey: var(--grey);
+
+  /* Subteam Theme Mapping */
+  --color-admin: var(--admin-primary);
+  --color-admin-light: var(--admin-secondary);
+  --color-mechanical: var(--mech-primary);
+  --color-mechanical-light: var(--mech-secondary);
+  --color-electrical: var(--elec-primary);
+  --color-electrical-light: var(--elec-secondary);
+  --color-bio: var(--bio-primary);
+  --color-bio-light: var(--bio-secondary);
+  --color-simulations: var(--sim-primary);
+  --color-simulations-light: var(--sim-secondary);
+}
+
+body {
+  background: white;
+  color: #171717;
+  font-family: Arial, Helvetica, sans-serif;
+}
