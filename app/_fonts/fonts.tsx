@@ -9,21 +9,21 @@ const norwester = localFont({
 
 const dmSans = localFont({
   src: [
-    { path: "./_fonts/dmsans/DMSans-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./_fonts/dmsans/DMSans-Italic.ttf", weight: "400", style: "italic" },
-    { path: "./_fonts/dmsans/DMSans-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./_fonts/dmsans/DMSans-MediumItalic.ttf", weight: "500", style: "italic" },
-    { path: "./_fonts/dmsans/DMSans-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./_fonts/dmsans/DMSans-BoldItalic.ttf", weight: "700", style: "italic" },
+    { path: "./dmsans/DMSans-Regular.ttf", weight: "400", style: "normal" },
+    { path: "./dmsans/DMSans-Italic.ttf", weight: "400", style: "italic" },
+    { path: "./dmsans/DMSans-Medium.ttf", weight: "500", style: "normal" },
+    { path: "./dmsans/DMSans-MediumItalic.ttf", weight: "500", style: "italic" },
+    { path: "./dmsans/DMSans-Bold.ttf", weight: "700", style: "normal" },
+    { path: "./dmsans/DMSans-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
   variable: "--font-dm-sans",
 });
 
 const glacialIndifference = localFont({
   src: [
-    { path: "./_fonts/glacialindifference/GlacialIndifference-Regular.otf", weight: "400", style: "normal" },
-    { path: "./_fonts/glacialindifference/GlacialIndifference-Italic.otf", weight: "400", style: "italic" },
-    { path: "./_fonts/glacialindifference/GlacialIndifference-Bold.otf", weight: "700", style: "normal" },
+    { path: "./glacialindifference/GlacialIndifference-Regular.otf", weight: "400", style: "normal" },
+    { path: "./glacialindifference/GlacialIndifference-Italic.otf", weight: "400", style: "italic" },
+    { path: "./glacialindifference/GlacialIndifference-Bold.otf", weight: "700", style: "normal" },
   ],
   variable: "--font-glacial",
 });
