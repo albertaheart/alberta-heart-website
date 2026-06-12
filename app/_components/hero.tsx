@@ -1,6 +1,7 @@
 import Image from "next/image";
 import logoMark from "../../public/AB.svg";
 import Capillaries from "./capillaries";
+import EkgTrace from "./ekg-trace";
 
 /**
  * Hero
@@ -111,47 +112,8 @@ const Hero = () => {
             Save lives.
           </p>
 
-          {/*
-            EKG trace: the brand motif.
-
-            How the animation works:
-              - The <path> is a hand-tuned ECG waveform (flat baseline, two
-                QRS-like spikes, flat again).
-              - `pathLength={1}` normalises the path to a length of 1 regardless
-                of the actual SVG geometry, so the dasharray/dashoffset math
-                stays simple.
-              - `strokeDasharray="1"` makes the dash the full path length.
-              - The <animate> tag sweeps `stroke-dashoffset` from 1 to -1 over
-                3s, which visually draws the trace left-to-right and then
-                "erases" it the same way, looping forever.
-              - All SMIL, no JS, no extra deps, works server-rendered.
-          */}
-          <svg
-            className="mt-10 h-12 w-full max-w-md"
-            viewBox="0 0 600 80"
-            fill="none"
-            preserveAspectRatio="none"
-            aria-hidden="true"
-          >
-            <path
-              d="M0 40 L120 40 L140 40 L150 30 L160 50 L170 10 L180 70 L190 40 L210 40 L290 40 L310 40 L320 30 L330 50 L340 10 L350 70 L360 40 L380 40 L600 40"
-              stroke="currentColor"
-              strokeWidth="2.5"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="text-light-red"
-              pathLength={1}
-              strokeDasharray="1"
-            >
-              <animate
-                attributeName="stroke-dashoffset"
-                from="1"
-                to="-1"
-                dur="3s"
-                repeatCount="indefinite"
-              />
-            </path>
-          </svg>
+          {/* EKG trace: the brand motif (see <EkgTrace>). */}
+          <EkgTrace className="mt-10 h-12 w-full max-w-md" />
 
           {/*
             CTA pair.

@@ -85,8 +85,8 @@ The page has a local `<Placeholder>` component (defined at the bottom of the sam
 - Use the Tailwind color tokens (e.g. `bg-light-red`, `text-dark-blue`); don't hardcode hex values in components.
 - New top-level pages should slot into the header `navLinks` array.
 - Logo assets: `public/AB.svg` (mark) and `public/ABWithText.svg` (lockup).
-- **Write generous code comments.** Top-of-file JSDoc on every component explaining its role; section banners for structural regions; inline comments for non-obvious bits (animation tricks, layout hacks, magic numbers). This overrides the usual "no comments unless surprising" default. The site is read by new team members, so comments are pedagogical.
-- **TSDoc rules.** Every exported component/function gets a TSDoc block. Keep the prose to a short paragraph (a couple of sentences, what it is and what's notable about its layout/behavior). Then **always** use `@param` for every parameter or prop and **always** use `@returns` for the return value. Even when a component takes no props, include a `@returns` line describing what renders. Skipping these tags is not allowed, even when the types make them feel redundant.
+- **Keep comments sparse.** Comment only the non-obvious (animation tricks, layout hacks, magic numbers), and keep those short. Don't narrate code that speaks for itself.
+- **TSDoc rules.** Every exported component/function gets a TSDoc block: a short prose line on what it is, plus `@param` for each prop and `@returns`. Keep it tight, don't over-explain.
 - **No em dashes (—).** Anywhere. Body copy, code comments, placeholder labels. Use commas, colons, parentheses, or a period instead.
 
 ## Don't

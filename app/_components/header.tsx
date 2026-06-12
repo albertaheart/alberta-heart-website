@@ -10,7 +10,7 @@ import logo from "../../public/ABWithText.svg";
 const navLinks: { label: string; href: string }[] = [
   { label: "About", href: "/about" },
   { label: "Conferences", href: "/conferences" },
-  { label: "Team", href: "#" },
+  { label: "Team", href: "/team" },
   { label: "Sponsor", href: "#" },
 ];
 

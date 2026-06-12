@@ -70,10 +70,17 @@
   --color-bio-light: var(--bio-secondary);
   --color-simulations: var(--sim-primary);
   --color-simulations-light: var(--sim-secondary);
+
+  /* Muted-deep subteam shades for full-bleed blocks (primary pulled toward
+     dark-blue): rich enough for white text without the neon of the primary. */
+  --color-electrical-deep: color-mix(in srgb, var(--elec-primary) 75%, var(--dark-blue));
+  --color-mechanical-deep: color-mix(in srgb, var(--mech-primary) 75%, var(--dark-blue));
+  --color-admin-deep: color-mix(in srgb, var(--admin-primary) 80%, var(--dark-blue));
+  --color-bio-deep: color-mix(in srgb, var(--bio-primary) 80%, var(--dark-blue));
 }
 
 body {
-  background: #f8f9fa;
+  background-color: #ffffff;
   color: #0D203B;
   font-family: Arial, Helvetica, sans-serif;
 }

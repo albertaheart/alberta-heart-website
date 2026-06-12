@@ -1,4 +1,5 @@
 import { Placeholder } from "../../_components/placeholder";
+import EkgTrace from "../../_components/ekg-trace";
 
 /**
  * Mission section of the About page. Header in a narrow column, then an
@@ -10,7 +11,12 @@ import { Placeholder } from "../../_components/placeholder";
  */
 export default function MissionSection() {
   return (
-    <section className="mt-24 border-t border-dark-blue/10 pt-24 md:mt-32 md:pt-32">
+    <section className="mt-24 md:mt-32">
+      {/* Grey EKG line stands in for a plain divider rule. */}
+      <EkgTrace
+        className="mb-24 h-8 w-full md:mb-32"
+        colorClassName="text-dark-blue/20"
+      />
       <div className="max-w-3xl">
         <p className="font-heading text-sm uppercase tracking-[0.3em] text-light-red">
           Our Mission

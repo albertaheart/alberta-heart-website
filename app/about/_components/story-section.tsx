@@ -1,4 +1,5 @@
 import { Placeholder } from "../../_components/placeholder";
+import EkgTrace from "../../_components/ekg-trace";
 
 /**
  * Story section of the About page. Header and origin-story copy in a
@@ -10,7 +11,13 @@ import { Placeholder } from "../../_components/placeholder";
  */
 export default function StorySection() {
   return (
-    <section className="mt-24 border-t border-dark-blue/10 pt-24 md:mt-32 md:pt-32">
+    <section className="mt-24 md:mt-32">
+      {/* Grey EKG line stands in for a plain divider rule. */}
+      <EkgTrace
+        className="mb-24 h-8 w-full md:mb-32"
+        colorClassName="text-dark-blue/20"
+        animated={false}
+      />
       <div className="max-w-3xl">
         <p className="font-heading text-sm uppercase tracking-[0.3em] text-light-red">
           Our Story
@@ -26,7 +33,7 @@ export default function StorySection() {
             University of Alberta.
           </p>
           <p>
-            What started as a dream has grown into a 45-person team across
+            What started as a dream has grown into a large team across
             engineering, medicine, and science, united by collaboration,
             innovation, and a drive to learn by building something real.
           </p>

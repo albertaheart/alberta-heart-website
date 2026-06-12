@@ -35,8 +35,16 @@ export default function WhoWeAreSection() {
               , turning classroom concepts into real prototypes and research.
             </p>
             <p>
-              We&apos;re 45 students from engineering, medicine, and science,
-              organized into five subteams that each own a piece of the
+              We&apos;re{" "}
+              <span className="font-semibold text-light-red">
+                45 students
+              </span>
+              {" "}from engineering, medicine, and science,
+              organized into{" "}
+              <span className="font-semibold text-light-red">
+                four subteams
+              </span>{" "}
+              that each own a piece of the
               problem, from pump design and electronics to the clinical and
               business side of getting a device into the world.
             </p>
@@ -51,36 +59,6 @@ export default function WhoWeAreSection() {
           />
         </div>
       </div>
-
-      {/*
-        Stat strip. Three headline numbers in a row (stacks on mobile),
-        each a big font-impact figure over a small label. Divider borders
-        between cells from sm up give it a "by the numbers" feel.
-      */}
-      <dl className="mt-16 grid grid-cols-1 gap-8 border-y border-dark-blue/10 py-10 sm:grid-cols-3 sm:gap-0">
-        {[
-          { value: "45", label: "Students" },
-          { value: "5", label: "Subteams" },
-          { value: "1", label: "Artificial heart" },
-        ].map(({ value, label }, i) => (
-          <div
-            key={label}
-            className={
-              // Left divider on the 2nd and 3rd cells once they sit in a row.
-              i === 0
-                ? "text-center"
-                : "text-center sm:border-l sm:border-dark-blue/10"
-            }
-          >
-            <dt className="font-impact text-5xl text-light-red md:text-6xl">
-              {value}
-            </dt>
-            <dd className="mt-2 font-heading text-sm uppercase tracking-[0.2em] text-dark-blue/60">
-              {label}
-            </dd>
-          </div>
-        ))}
-      </dl>
     </section>
   );
 }
