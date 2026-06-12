@@ -49,7 +49,7 @@
   /* Font Mapping */
   --font-impact: var(--font-norwester);
   --font-heading: var(--font-glacial);
-  --font-sans: var(--font-dm-sans)
+  --font-sans: var(--font-dm-sans);
 
   /* Main Theme Mapping */
   --color-light-red: var(--light-red);
