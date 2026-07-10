@@ -1,11 +1,11 @@
-import { Placeholder } from "../../_components/placeholder";
 import EkgTrace from "../../_components/ekg-trace";
+import Image from "next/image";
+import early_image from "../../../public/about/The OG's.jpg";
+import late_image from "../../../public/about/Team - 2026.jpg";
 
 /**
  * Story section of the About page. Header and origin-story copy in a
- * narrow column, then a three-tile staggered collage below. The vertical
- * offsets on the second and third tiles (`md:mt-16`, `md:mt-8`) give the
- * collage a scattered/polaroid feel rather than a strict gallery grid.
+ * narrow column, then a three-tile photo collage below.
  *
  * @returns The "Our Story" section.
  */
@@ -40,22 +40,25 @@ export default function StorySection() {
         </div>
       </div>
 
-      {/* Staggered three-tile collage. Stacks on mobile, scatters from md up. */}
-      <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:grid-cols-3 md:gap-8">
-        <Placeholder
-          aspect="aspect-[4/5]"
-          label="Founding members. Early team photo"
-        />
-        <div className="md:mt-16">
-          <Placeholder
-            aspect="aspect-[3/4]"
-            label="First prototype. Bench shot"
+      {/* Two-tile collage. Stacks on mobile, sits side-by-side from md up. */}
+      <div className="mt-12 grid grid-cols-1 gap-6 md:mt-16 md:h-112 md:grid-cols-5 md:gap-8">
+        <div className="relative aspect-4/5 overflow-hidden rounded-lg md:col-span-2 md:aspect-auto md:h-full">
+          <Image
+            src={early_image}
+            alt="The original five Alberta Heart members"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
-        <div className="md:mt-8">
-          <Placeholder
-            aspect="aspect-[4/5]"
-            label="Competition day. Team at the booth"
+
+        <div className="relative aspect-3/2 overflow-hidden rounded-lg md:col-span-3 md:aspect-auto md:h-full">
+          <Image
+            src={late_image}
+            alt="The Alberta Heart team in 2026"
+            fill
+            className="object-cover"
+            priority
           />
         </div>
       </div>

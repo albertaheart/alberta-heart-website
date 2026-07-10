@@ -1,4 +1,5 @@
-import { Placeholder } from "../../_components/placeholder";
+import Image from "next/image";
+import image from "../../../public/about/Workshop.jpg";
 
 /**
  * Lead section of the About page. Merges the old "what we do" and "who we
@@ -52,10 +53,14 @@ export default function WhoWeAreSection() {
         </div>
 
         {/* Right column: portrait image, top-aligned with the eyebrow. */}
-        <div className="md:col-span-5">
-          <Placeholder
-            aspect="aspect-[4/5]"
-            label="The team. Group portrait of Alberta Heart members"
+        <div className="md:col-span-5 relative aspect-4/5 overflow-hidden rounded-lg">
+          <Image
+            src={image}
+            alt=""
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 40vw, 100vw"
+            priority
           />
         </div>
       </div>

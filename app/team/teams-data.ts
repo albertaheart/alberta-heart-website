@@ -1,3 +1,11 @@
+export type Person = {
+  name: string;
+  imageLabel: string;
+  blurb?: string;
+  /** Path under /public to a real photo. Falls back to Placeholder when omitted. */
+  imagePath?: string;
+};
+
 export type Team = {
   index: string;
   name: string;
@@ -5,6 +13,8 @@ export type Team = {
   tagline: string;
   description: string;
   bullets: { label: string; text: string }[];
+  /** Head(s) of this subteam. */
+  leads: Person[];
   imageLabel: string;
   /** Light wash behind the image (the team's -light token). */
   imageBgClass: string;
@@ -17,6 +27,21 @@ export type Team = {
   /** Muted team color for the accent rule. */
   accentBgLightClass: string;
 };
+
+/** Org-wide leadership, not tied to a single subteam. */
+export const LEADERSHIP: Person[] = [
+  {
+    name: "Aryka Gordon",
+    imageLabel: "Portrait of Aryka Gordon, Project Manager",
+    blurb: "Project Manager",
+    imagePath: "/team_members/project_manager/Aryka_Gordon.png",
+  },
+  {
+    name: "Henju Duvenhage",
+    imageLabel: "Portrait of Henju Duvenhage, Project Advisor",
+    blurb: "Project Advisor",
+  },
+];
 
 export const TEAMS: Team[] = [
   {
@@ -43,6 +68,10 @@ export const TEAMS: Team[] = [
         text: "Works closely with mechanical, simulation, and testing teams.",
       },
     ],
+    leads: [
+      { name: "Matt Priece", imageLabel: "Portrait of Matt Priece, Electrical Team Lead" },
+      { name: "Kira Jordan", imageLabel: "Portrait of Kira Jordan, Electrical Team Lead" },
+    ],
     imageLabel: "Electrical team working on control hardware and circuits",
     imageBgClass: "bg-electrical-light",
     accentTextClass: "text-electrical",
@@ -52,7 +81,7 @@ export const TEAMS: Team[] = [
   },
   {
     index: "02",
-    name: "Pumping Mechanism & Mock Circulatory",
+    name: "Pumping Mechanism",
     tagline: "Architecture & Fluid Dynamics",
     description:
       "Designs, develops, and fabricates the core physical components of the heart, ensuring optimal fluid dynamics and structural integrity.",
@@ -69,20 +98,58 @@ export const TEAMS: Team[] = [
         label: "Fabrication",
         text: "Prototype manufacturing and integration with biocompatible materials and sensors.",
       },
-      {
-        label: "Validation",
-        text: "Testing and validating builds using the mock circulatory loop.",
-      },
     ],
-    imageLabel: "Pump prototype and mock circulatory loop on the test bench",
-    imageBgClass: "bg-mechanical-light",
-    accentTextClass: "text-mechanical",
-    accentTextLightClass: "text-mechanical/40",
-    accentBgClass: "bg-mechanical",
-    accentBgLightClass: "bg-mechanical/30",
+    leads: [
+      { name: "Mattea Krug", imageLabel: "Portrait of Mattea Krug, Pumping Mechanism Team Lead" },
+    ],
+    imageLabel: "Pump prototype on the workbench",
+    imageBgClass: "bg-pumping-mechanism-light",
+    accentTextClass: "text-pumping-mechanism",
+    accentTextLightClass: "text-pumping-mechanism/40",
+    accentBgClass: "bg-pumping-mechanism",
+    accentBgLightClass: "bg-pumping-mechanism/30",
   },
   {
     index: "03",
+    name: "Mock Circulatory Loop",
+    tagline: "Testing & Validation",
+    description:
+      "Builds and runs the mock circulatory loop, a benchtop platform that mimics human circulation, to test and validate the pump under realistic physiological conditions.",
+    bullets: [
+      {
+        label: "Loop Design",
+        text: "Builds and maintains the benchtop circulatory loop used to simulate physiological flow.",
+      },
+      {
+        label: "Validation",
+        text: "Runs pump prototypes through the loop to validate performance against design targets.",
+      },
+      {
+        label: "Data Acquisition",
+        text: "Collects and analyzes pressure, flow, and washout data from test runs.",
+      },
+    ],
+    leads: [
+      {
+        name: "Zohan Chan",
+        imageLabel: "Portrait of Zohan Chan, Mock Circulatory Loop Team Lead",
+        imagePath: "/team_members/mcl_leads/Zohan_Chan.png",
+      },
+      {
+        name: "Daniel Morozov",
+        imageLabel: "Portrait of Daniel Morozov, Mock Circulatory Loop Team Lead",
+        imagePath: "/team_members/mcl_leads/Daniel_Morozov.png",
+      },
+    ],
+    imageLabel: "Mock circulatory loop test rig running a pump prototype",
+    imageBgClass: "bg-mock-circulatory-loop-light",
+    accentTextClass: "text-mock-circulatory-loop",
+    accentTextLightClass: "text-mock-circulatory-loop/40",
+    accentBgClass: "bg-mock-circulatory-loop",
+    accentBgLightClass: "bg-mock-circulatory-loop/30",
+  },
+  {
+    index: "04",
     name: "Alberta Bot",
     tagline: "Software & Automation",
     description:
@@ -101,6 +168,13 @@ export const TEAMS: Team[] = [
         text: "Acts as a universal support team, optimizing processes for every other department.",
       },
     ],
+    leads: [
+      {
+        name: "Cohen Chan",
+        imageLabel: "Portrait of Cohen Chan, Alberta Bot Team Lead",
+        imagePath: "/team_members/alberta_bot_leads/Cohen_Chan.png",
+      },
+    ],
     imageLabel: "Bot team members building internal software tooling",
     imageBgClass: "bg-admin-light",
     accentTextClass: "text-admin",
@@ -109,7 +183,7 @@ export const TEAMS: Team[] = [
     accentBgLightClass: "bg-admin/30",
   },
   {
-    index: "04",
+    index: "05",
     name: "Clinical Assurance",
     tagline: "Safety, Compliance & Patient Focus",
     description:
@@ -132,11 +206,23 @@ export const TEAMS: Team[] = [
         text: "Leads cross-team communication to keep engineering decisions grounded in patient safety.",
       },
     ],
+    leads: [
+      {
+        name: "Natalie Hu",
+        imageLabel: "Portrait of Natalie Hu, Clinical Assurance Team Lead",
+        imagePath: "/team_members/clinical_assurance_leads/Natalie_Hu.png",
+      },
+      {
+        name: "Krish Chahal",
+        imageLabel: "Portrait of Krish Chahal, Clinical Assurance Team Lead",
+        imagePath: "/team_members/clinical_assurance_leads/Krish_Chahal.png",
+      },
+    ],
     imageLabel: "Clinical assurance team reviewing risk and validation documents",
-    imageBgClass: "bg-bio-light",
-    accentTextClass: "text-bio",
-    accentTextLightClass: "text-bio/40",
-    accentBgClass: "bg-bio",
-    accentBgLightClass: "bg-bio/30",
+    imageBgClass: "bg-clinical-assurance-light",
+    accentTextClass: "text-clinical-assurance",
+    accentTextLightClass: "text-clinical-assurance/40",
+    accentBgClass: "bg-clinical-assurance",
+    accentBgLightClass: "bg-clinical-assurance/30",
   },
 ];

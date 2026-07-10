@@ -66,9 +66,16 @@ function generatePaths(
   width: number,
   height: number,
   density: number,
+  variant: "right" | "bottom" = "right",
+  maxBranches: number = Infinity,
 ): CapillaryPath[] {
   const rng = mulberry32(seed);
   const paths: CapillaryPath[] = [];
+
+  // Bottom variant: branches retain more of their parent's length so they
+  // stay long across generations rather than tapering off quickly.
+  const lengthRetentionMin    = variant === "bottom" ? 0.85 : 0.55;
+  const lengthRetentionJitter = variant === "bottom" ? 0.12 : 0.30;
 
   const branch = (
     x: number,
@@ -98,48 +105,82 @@ function generatePaths(
       width: thickness,
     });
 
-    // Spawn children. `density` (0..1) controls branch count per node.
-    const childCount = 1 + Math.floor(rng() * (1 + density * 2));
+    // `density` controls how many children each node can spawn; `maxBranches`
+    // caps it independently so you can keep density high for fine detail while
+    // keeping the overall structure less bushy.
+    const childCount = Math.min(maxBranches, 1 + Math.floor(rng() * (1 + density * 2)));
     for (let i = 0; i < childCount; i++) {
       const spread = Math.PI / 3; // ~60° fan
       const newAngle = angle + (rng() - 0.5) * spread;
-      const newLength = length * (0.55 + rng() * 0.3);
+      const newLength = length * (lengthRetentionMin + rng() * lengthRetentionJitter);
       const newThickness = thickness * (0.65 + rng() * 0.15);
       branch(endX, endY, newAngle, newLength, newThickness, depth - 1);
     }
   };
 
-  // Trunks: only spawn from the right edge, top-right corner, and
-  // bottom-right corner. Never from the left edge or the left portion of
-  // the top/bottom edges. When the SVG is positioned over the right half of
-  // the page, the SVG's left edge sits at screen center, and any trunk
-  // there would look like a capillary "starting magically" in the middle of
-  // the page. Constraining the spawn points to the right-side perimeter
-  // makes every vessel appear to grow from the page edges inward toward the
-  // logo, which is anatomically correct (thick trunks at the periphery,
-  // fine tips near the heart).
-  const trunks = [
-    // Right edge: fan of trunks pointing leftward across the network.
-    { x: width + 40, y: height * 0.15, angle: Math.PI - 0.3 },
-    { x: width + 40, y: height * 0.4, angle: Math.PI - 0.1 },
-    { x: width + 40, y: height * 0.6, angle: Math.PI + 0.1 },
-    { x: width + 40, y: height * 0.85, angle: Math.PI + 0.3 },
+  // "right": trunks from the right perimeter only, so no vessel appears to
+  // start mid-page when the SVG covers the right half of the viewport.
+  // "bottom": trunks from the full bottom edge, growing upward.
+  const trunks =
+    variant === "bottom"
+      ? [
+          // Bottom edge only: dense even spread, all pointing nearly straight
+          // up. Keeping angles close to -π/2 avoids sideways bending at the
+          // edges that side-spawning trunks cause on a full-width SVG.
+          { x: width * 0.00, y: height + 40, angle: -Math.PI / 2 - 0.12 },
+          { x: width * 0.035, y: height + 40, angle: -Math.PI / 2 - 0.10 },
+          { x: width * 0.07, y: height + 40, angle: -Math.PI / 2 - 0.09 },
+          { x: width * 0.105, y: height + 40, angle: -Math.PI / 2 - 0.07 },
+          { x: width * 0.14, y: height + 40, angle: -Math.PI / 2 - 0.06 },
+          { x: width * 0.175, y: height + 40, angle: -Math.PI / 2 - 0.05 },
+          { x: width * 0.21, y: height + 40, angle: -Math.PI / 2 - 0.04 },
+          { x: width * 0.245, y: height + 40, angle: -Math.PI / 2 - 0.03 },
+          { x: width * 0.28, y: height + 40, angle: -Math.PI / 2 - 0.02 },
+          { x: width * 0.315, y: height + 40, angle: -Math.PI / 2 - 0.01 },
+          { x: width * 0.35, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.385, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.42, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.455, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.49, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.51, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.545, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.58, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.615, y: height + 40, angle: -Math.PI / 2 },
+          { x: width * 0.65, y: height + 40, angle: -Math.PI / 2 + 0.01 },
+          { x: width * 0.685, y: height + 40, angle: -Math.PI / 2 + 0.02 },
+          { x: width * 0.72, y: height + 40, angle: -Math.PI / 2 + 0.03 },
+          { x: width * 0.755, y: height + 40, angle: -Math.PI / 2 + 0.04 },
+          { x: width * 0.79, y: height + 40, angle: -Math.PI / 2 + 0.05 },
+          { x: width * 0.825, y: height + 40, angle: -Math.PI / 2 + 0.06 },
+          { x: width * 0.86, y: height + 40, angle: -Math.PI / 2 + 0.07 },
+          { x: width * 0.895, y: height + 40, angle: -Math.PI / 2 + 0.09 },
+          { x: width * 0.93, y: height + 40, angle: -Math.PI / 2 + 0.10 },
+          { x: width * 0.965, y: height + 40, angle: -Math.PI / 2 + 0.12 },
+          { x: width * 1.00, y: height + 40, angle: -Math.PI / 2 + 0.12 },
+        ]
+      : [
+          // Right edge: fan of trunks pointing leftward across the network.
+          { x: width + 40, y: height * 0.15, angle: Math.PI - 0.3 },
+          { x: width + 40, y: height * 0.4, angle: Math.PI - 0.1 },
+          { x: width + 40, y: height * 0.6, angle: Math.PI + 0.1 },
+          { x: width + 40, y: height * 0.85, angle: Math.PI + 0.3 },
 
-    // Top edge, right portion: pointing down-left into the network.
-    { x: width * 0.6, y: -40, angle: (3 * Math.PI) / 4 + 0.1 },
-    { x: width * 0.85, y: -40, angle: Math.PI / 2 + 0.4 },
+          // Top edge, right portion: pointing down-left into the network.
+          { x: width * 0.6, y: -40, angle: (3 * Math.PI) / 4 + 0.1 },
+          { x: width * 0.85, y: -40, angle: Math.PI / 2 + 0.4 },
 
-    // Bottom edge, right portion: pointing up-left into the network.
-    { x: width * 0.65, y: height + 40, angle: (-3 * Math.PI) / 4 - 0.1 },
-    { x: width * 0.85, y: height + 40, angle: -Math.PI / 2 - 0.4 },
-  ];
+          // Bottom edge, right portion: pointing up-left into the network.
+          { x: width * 0.65, y: height + 40, angle: (-3 * Math.PI) / 4 - 0.1 },
+          { x: width * 0.85, y: height + 40, angle: -Math.PI / 2 - 0.4 },
+        ];
 
   for (const t of trunks) {
-    // Initial trunk length 200 and recursion depth 7 give roughly 50% more
-    // reach than the defaults. Branches now extend deep into the network
-    // toward the screen center instead of staying clustered near the right
-    // edge.
-    branch(t.x, t.y, t.angle, 200, 4, 7);
+    // Bottom: short trunk so the first split appears almost immediately at
+    // the bottom edge, then high depth so the long-retention branches fan
+    // out across the full footer height.
+    const trunkLength = variant === "bottom" ? 70 : 200;
+    const trunkDepth  = variant === "bottom" ? 8  : 7;
+    branch(t.x, t.y, t.angle, trunkLength, 4, trunkDepth);
   }
 
   return paths;
@@ -168,6 +209,16 @@ type CapillariesProps = {
   glowOriginX?: number;
   /** Y origin of the pulse. Defaults to vertical center of the viewBox. */
   glowOriginY?: number;
+  /**
+   * "right" (default): trunks spawn from the right edge, suits the hero.
+   * "bottom": trunks spawn from the bottom edge, suits the footer.
+   */
+  variant?: "right" | "bottom";
+  /**
+   * Cap on child branches per node. Lower values produce fewer sub-branches
+   * and more vine-like vessels regardless of density. Defaults to unlimited.
+   */
+  maxBranches?: number;
 };
 
 const Capillaries = ({
@@ -180,6 +231,8 @@ const Capillaries = ({
   glowDuration = "3s",
   glowOriginX,
   glowOriginY,
+  variant = "right",
+  maxBranches = Infinity,
 }: CapillariesProps) => {
   /*
     SVG-internal IDs need to be unique on the page so multiple <Capillaries />
@@ -191,7 +244,7 @@ const Capillaries = ({
   const maskId = `cap-mask-${rawId}`;
   const gradId = `cap-glow-${rawId}`;
 
-  const paths = generatePaths(seed, width, height, density);
+  const paths = generatePaths(seed, width, height, density, variant, maxBranches);
 
   // Default the pulse origin to (0, height/2): left edge, vertically
   // centered. This is the "screen center" anchor when the SVG covers the

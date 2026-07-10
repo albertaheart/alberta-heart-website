@@ -1,49 +1,50 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
-import logo from "../../public/ABWithText.svg";
+import { usePathname } from "next/navigation";
+import { useEffect, useState } from "react";
+import logo from "../../public/brand/ABWithText.svg";
 
-/*
-  Nav routes. Each entry pairs a display label with its href. Routes that
-  don't have pages yet are left as "#" so they're visibly inert until the
-  page exists. Easier to spot a TODO than chase a 404.
-*/
 const navLinks: { label: string; href: string }[] = [
   { label: "About", href: "/about" },
   { label: "Conferences", href: "/conferences" },
   { label: "Team", href: "/team" },
-  { label: "Sponsor", href: "#" },
+  { label: "Sponsors", href: "/sponsors" },
+  { label: "Contact Us", href: "/contact_us" },
 ];
 
 const Header = () => {
-  return (
-    <header className="sticky top-0 z-50 flex items-center px-6 md:px-16 h-24 bg-white border-b border-grey/20 shadow-sm">
+  const pathname = usePathname();
+  const [scrolled, setScrolled] = useState(false);
 
-      {/* Logo links back to home. */}
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 20);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  return (
+    <header className={`sticky top-0 z-50 flex items-center px-6 md:px-16 h-24 border-b transition-all duration-300 ${
+      scrolled ? "bg-white border-grey/20 shadow-sm" : "bg-white/0 border-white/0 shadow-none"
+    }`}>
       <Link href="/" className="relative h-16 w-48 shrink-0 z-10">
         <Image src={logo} alt="Alberta Heart logo" fill className="object-contain object-left" />
       </Link>
-
-      {/* Nav: uses Next.js Link so navigation is client-side (no full page reload). */}
       <nav className="hidden md:flex items-center gap-10 ml-10">
         {navLinks.map(({ label, href }) => (
           <Link
             key={label}
             href={href}
-            className="font-heading text-lg text-dark-blue/80 hover:text-light-red transition-colors duration-300 tracking-wide"
+            className={`font-heading text-lg transition-colors duration-300 tracking-wide ${
+              pathname === href ? "text-light-red" : "text-dark-blue/80 hover:text-light-red"
+            }`}
           >
             {label}
           </Link>
         ))}
       </nav>
-
-      {/* Contact Us Button */}
-      <a
-        href="#contact"
-        className="hidden md:block bg-light-red text-white px-6 py-2 rounded-lg font-heading font-semibold text-sm hover:bg-maroon transition-colors duration-300 ml-auto"
-      >
-        Contact Us
-      </a>
-
     </header>
   );
 };

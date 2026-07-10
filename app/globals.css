@@ -9,16 +9,16 @@
   --color-grey: #e6e6e4;
 
   --color-admin: #49326b;
-  --color-mechanical: #145da0;
+  --color-pumping-mechanism: #145da0;
   --color-electrical: #bb3b17;
-  --color-bio: #32620e;
-  --color-simulations: #ffd51e;
+  --color-clinical-assurance: #32620e;
+  --color-clinical-assurance: #ffd51e;
 
   --color-admin-light: #f8abeb;
-  --color-mechanical-light: #c0f0f7;
+  --color-pumping-mechanism-light: #c0f0f7;
   --color-electrical-light: #fec583;
-  --color-bio-light: #f3fadc;
-  --color-simulations-light: #fff9c7;
+  --color-clinical-assurance-light: #f3fadc;
+  --color-clinical-assurance-light: #fff9c7;
 }
 
 :root {
@@ -32,17 +32,17 @@
 
   /* Subteam Primary Colors */
   --admin-primary: #49326b;
-  --mech-primary: #145da0;
-  --elec-primary: #bb3b17;
-  --bio-primary: #32620e;
-  --sim-primary: #ffd51e;
+  --pumping-mechanism-primary: #145da0;
+  --electrical-primary: #bb3b17;
+  --clinical-assurance-primary: #32620e;
+  --mock-circulatory-loop-primary: #ffd51e;
 
   /* Subteam Secondary Colors */
   --admin-secondary: #f8abeb;
-  --mech-secondary: #c0f0f7;
-  --elec-secondary: #fec583;
-  --bio-secondary: #f3fadc;
-  --sim-secondary: #fff9c7;
+  --pumping-mechanism-secondary: #c0f0f7;
+  --electrical-secondary: #fec583;
+  --clinical-assurance-secondary: #f3fadc;
+  --mock-circulatory-loop-secondary: #fff9c7;
 }
 
 @theme inline {
@@ -62,21 +62,22 @@
   /* Subteam Theme Mapping */
   --color-admin: var(--admin-primary);
   --color-admin-light: var(--admin-secondary);
-  --color-mechanical: var(--mech-primary);
-  --color-mechanical-light: var(--mech-secondary);
-  --color-electrical: var(--elec-primary);
-  --color-electrical-light: var(--elec-secondary);
-  --color-bio: var(--bio-primary);
-  --color-bio-light: var(--bio-secondary);
-  --color-simulations: var(--sim-primary);
-  --color-simulations-light: var(--sim-secondary);
+  --color-pumping-mechanism: var(--pumping-mechanism-primary);
+  --color-pumping-mechanism-light: var(--pumping-mechanism-secondary);
+  --color-electrical: var(--electrical-primary);
+  --color-electrical-light: var(--electrical-secondary);
+  --color-clinical-assurance: var(--clinical-assurance-primary);
+  --color-clinical-assurance-light: var(--clinical-assurance-secondary);
+  --color-mock-circulatory-loop: var(--mock-circulatory-loop-primary);
+  --color-mock-circulatory-loop-light: var(--mock-circulatory-loop-secondary);
 
   /* Muted-deep subteam shades for full-bleed blocks (primary pulled toward
      dark-blue): rich enough for white text without the neon of the primary. */
-  --color-electrical-deep: color-mix(in srgb, var(--elec-primary) 75%, var(--dark-blue));
-  --color-mechanical-deep: color-mix(in srgb, var(--mech-primary) 75%, var(--dark-blue));
+  --color-electrical-deep: color-mix(in srgb, var(--electrical-primary) 75%, var(--dark-blue));
+  --color-mechanical-deep: color-mix(in srgb, var(--pumping-mechanism-primary) 75%, var(--dark-blue));
   --color-admin-deep: color-mix(in srgb, var(--admin-primary) 80%, var(--dark-blue));
-  --color-bio-deep: color-mix(in srgb, var(--bio-primary) 80%, var(--dark-blue));
+  --color-clinical-assurance-deep: color-mix(in srgb, var(--clinical-assurance-primary) 80%, var(--dark-blue));
+  --color-mock-circulatory-loop-deep: color-mix(in srgb, var(--mock-circulatory-loop-primary) 80%, var(--dark-blue));
 }
 
 body {

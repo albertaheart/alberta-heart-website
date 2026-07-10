@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 // @ts-ignore: side-effect CSS import without type declarations
 import "./globals.css";
 import Header from "./_components/header";
+import Footer from "./_components/footer";
 import { norwester, dmSans, glacialIndifference } from "./_fonts/fonts";
 
 export const metadata: Metadata = {
@@ -24,6 +25,8 @@ export default function RootLayout({
 				<Header />
 
 				{children}
+
+				<Footer />
 			</body>
 		</html>
 	);

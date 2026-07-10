@@ -1,5 +1,6 @@
-import { Placeholder } from "../../_components/placeholder";
 import EkgTrace from "../../_components/ekg-trace";
+import Image from "next/image";
+import image from "../../../public/about/hardware_on_table.jpg";
 
 /**
  * Mission section of the About page. Header in a narrow column, then an
@@ -73,10 +74,13 @@ export default function MissionSection() {
         </div>
 
         {/* Right column: tall 3:5 portrait, reads as a feature shot. */}
-        <div className="md:col-span-4">
-          <Placeholder
-            aspect="aspect-[3/5]"
-            label="Lab close-up. Hands on the prototype"
+        <div className="relative md:col-span-4 aspect-3/5 overflow-hidden rounded-lg">
+          <Image
+            src={image}
+            alt="Lab close-up. Hands on the prototype"
+            fill
+            className="object-cover"
+            sizes="(min-width: 768px) 33vw, 100vw"
           />
         </div>
       </div>
