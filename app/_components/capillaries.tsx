@@ -68,6 +68,7 @@ function generatePaths(
   density: number,
   variant: "right" | "bottom" = "right",
   maxBranches: number = Infinity,
+  baseThickness: number = 4,
 ): CapillaryPath[] {
   const rng = mulberry32(seed);
   const paths: CapillaryPath[] = [];
@@ -180,7 +181,7 @@ function generatePaths(
     // out across the full footer height.
     const trunkLength = variant === "bottom" ? 70 : 200;
     const trunkDepth  = variant === "bottom" ? 8  : 7;
-    branch(t.x, t.y, t.angle, trunkLength, 4, trunkDepth);
+    branch(t.x, t.y, t.angle, trunkLength, baseThickness, trunkDepth);
   }
 
   return paths;
@@ -219,6 +220,8 @@ type CapillariesProps = {
    * and more vine-like vessels regardless of density. Defaults to unlimited.
    */
   maxBranches?: number;
+  /** Stroke width of the trunks before branching thins them out. */
+  baseThickness?: number;
 };
 
 const Capillaries = ({
@@ -233,6 +236,7 @@ const Capillaries = ({
   glowOriginY,
   variant = "right",
   maxBranches = Infinity,
+  baseThickness = 4,
 }: CapillariesProps) => {
   /*
     SVG-internal IDs need to be unique on the page so multiple <Capillaries />
@@ -244,7 +248,7 @@ const Capillaries = ({
   const maskId = `cap-mask-${rawId}`;
   const gradId = `cap-glow-${rawId}`;
 
-  const paths = generatePaths(seed, width, height, density, variant, maxBranches);
+  const paths = generatePaths(seed, width, height, density, variant, maxBranches, baseThickness);
 
   // Default the pulse origin to (0, height/2): left edge, vertically
   // centered. This is the "screen center" anchor when the SVG covers the

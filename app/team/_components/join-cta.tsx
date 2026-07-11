@@ -7,14 +7,13 @@ import Link from "next/link";
  */
 export default function JoinCta() {
   return (
-    <p className="mx-auto max-w-5xl px-6 text-center font-sans text-lg text-dark-blue/80">
-      Want to join the team?{" "}
-      <Link
-        href="/contact_us"
-        className="font-heading text-light-red underline underline-offset-4 hover:text-maroon"
-      >
-        Reach out to us!
-      </Link>
-    </p>
+    <Link
+      href="/contact_us"
+      className="mx-auto block max-w-5xl px-6 text-center font-sans text-lg text-dark-blue/80"
+    >
+      <span className="font-heading text-light-red underline underline-offset-4 transition hover:text-light-red/70">
+        Want to join the team? Reach out to us!
+      </span>
+    </Link>
   );
 }

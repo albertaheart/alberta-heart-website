@@ -1,6 +1,6 @@
 import EkgTrace from "../../_components/ekg-trace";
 import Image from "next/image";
-import image from "../../../public/about/hardware_on_table.jpg";
+import image from "../../../public/about/hardware-on-table.jpg";
 
 /**
  * Mission section of the About page. Header in a narrow column, then an
