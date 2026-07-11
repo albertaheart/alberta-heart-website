@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "deploy": "wrangler deploy"
   },
   "dependencies": {
     "lucide-react": "^1.24.0",
@@ -18,6 +19,10 @@
     "ignoredBuiltDependencies": [
       "sharp",
       "unrs-resolver"
+    ],
+    "onlyBuiltDependencies": [
+      "esbuild",
+      "workerd"
     ]
   },
   "devDependencies": {
@@ -28,6 +33,7 @@
     "eslint": "^9",
     "eslint-config-next": "16.1.7",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "wrangler": "^4"
   }
 }

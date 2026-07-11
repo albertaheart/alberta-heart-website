@@ -62,13 +62,13 @@ const Hero = () => {
           {/* Primary (Join) leads because prospective members are the priority audience. */}
           <div className="mt-8 flex flex-col items-center gap-4 sm:flex-row sm:gap-5 md:items-start md:justify-start">
             <a
-              href="#join"
+              href="/contact_us"
               className="rounded-lg bg-light-red px-8 py-3 font-heading font-semibold text-white shadow-sm transition-colors duration-300 hover:bg-maroon"
             >
               Join the Team
             </a>
             <a
-              href="#sponsor"
+              href="/sponsors"
               className="rounded-lg border-2 border-dark-blue px-8 py-3 font-heading font-semibold text-dark-blue transition-colors duration-300 hover:bg-dark-blue hover:text-white"
             >
               Sponsor Us
