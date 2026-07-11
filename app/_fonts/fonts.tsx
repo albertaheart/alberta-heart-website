@@ -10,11 +10,7 @@ const norwester = localFont({
 const dmSans = localFont({
   src: [
     { path: "./dmsans/DMSans-Regular.ttf", weight: "400", style: "normal" },
-    { path: "./dmsans/DMSans-Italic.ttf", weight: "400", style: "italic" },
-    { path: "./dmsans/DMSans-Medium.ttf", weight: "500", style: "normal" },
-    { path: "./dmsans/DMSans-MediumItalic.ttf", weight: "500", style: "italic" },
     { path: "./dmsans/DMSans-Bold.ttf", weight: "700", style: "normal" },
-    { path: "./dmsans/DMSans-BoldItalic.ttf", weight: "700", style: "italic" },
   ],
   variable: "--font-dm-sans",
 });
