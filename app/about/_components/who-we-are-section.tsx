@@ -43,7 +43,7 @@ export default function WhoWeAreSection() {
               {" "}from engineering, medicine, and science,
               organized into{" "}
               <span className="font-semibold text-light-red">
-                four subteams
+                five subteams
               </span>{" "}
               that each own a piece of the
               problem, from pump design and electronics to the clinical and

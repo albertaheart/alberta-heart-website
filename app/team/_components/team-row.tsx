@@ -67,7 +67,7 @@ export default function TeamRow({ team, reversed }: { team: Team; reversed: bool
             </p>
             <div className="mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2">
               {team.leads.map((p) => (
-                <PersonCard key={p.name} person={p} size="lg" />
+                <PersonCard key={p.name} person={p} size="lg" accentTextClass={team.accentTextClass} />
               ))}
             </div>
           </div>
