@@ -11,7 +11,7 @@ export type TimelineEntry = {
   location: string;
   name: string;
   description: ReactNode;
-  image: StaticImageData;
+  image?: StaticImageData;
   aspect?: string; // Tailwind aspect-ratio class, defaults to "aspect-16/9"
 };
 
@@ -30,7 +30,6 @@ export const EVENTS: TimelineEntry[] = [
     name: "Annual Biomedical Engineering Conference",
     description:
       "We brought our research closer to home, presenting our pumping mechanism innovations to regional researchers, mentors, and healthcare professionals at this student-focused interdisciplinary conference.",
-    image: CUBECImage,
   },
   {
     date: "December 2025",
@@ -62,6 +61,14 @@ export const EVENTS: TimelineEntry[] = [
     ),
     image: ISMCSImage,
     aspect: "aspect-[4/3]",
+  },
+  { 
+    date: "January 2026",
+    location: "Calgary, Alberta",
+    name: "Canadian University Biomedical Engineering Conference (CUBEC)",
+    description: 
+      "We headed to Calgary for CUBEC, diving into keynote presentations, student design competitions, and panel discussions with leading researchers and industry professionals. A career fair rounded things out, giving our members a shot at networking and professional development.",
+    image: CUBECImage,
   },
   {
     date: "Upcoming",

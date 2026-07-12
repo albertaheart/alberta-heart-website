@@ -1,7 +1,7 @@
 import { Fragment } from "react";
 import EkgTrace from "../../_components/ekg-trace";
 import Image from "next/image";
-import { EVENTS } from "./timeline";
+import { EVENTS } from "./timeline-data";
 
 export default function GlobalImpactSection() {
   return (
@@ -71,17 +71,18 @@ export default function GlobalImpactSection() {
                 >
                   {event.description}
                 </p>
-                <div
+                {event.image && (<div
                   className={`relative mt-5 ${event.aspect ?? "aspect-video"} max-w-2xl overflow-hidden rounded-lg`}
                 >
-                  <Image
-                    src={event.image}
-                    alt={`Photo from ${event.name} in ${event.location}`}
-                    fill
-                    className="object-cover"
-                    sizes="(min-width: 768px) 42rem, 100vw"
+                  
+                    <Image
+                      src={event.image}
+                      alt={`Photo from ${event.name} in ${event.location}`}
+                      fill
+                      className="object-cover"
+                      sizes="(min-width: 768px) 42rem, 100vw"
                   />
-                </div>
+                </div>)}
               </div>
             </Fragment>
           );

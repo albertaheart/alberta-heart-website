@@ -35,14 +35,14 @@
   --pumping-mechanism-primary: #145da0;
   --electrical-primary: #bb3b17;
   --clinical-assurance-primary: #32620e;
-  --mock-circulatory-loop-primary: #ffd51e;
+  --mock-circulatory-loop-primary: #0e7c86;
 
   /* Subteam Secondary Colors */
   --admin-secondary: #f8abeb;
   --pumping-mechanism-secondary: #c0f0f7;
   --electrical-secondary: #fec583;
   --clinical-assurance-secondary: #f3fadc;
-  --mock-circulatory-loop-secondary: #fff9c7;
+  --mock-circulatory-loop-secondary: #d6eff0;
 }
 
 @theme inline {
