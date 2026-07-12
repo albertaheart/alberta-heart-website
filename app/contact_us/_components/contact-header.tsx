@@ -26,7 +26,7 @@ export default function ContactHeader() {
 
       <EkgTrace
         className="mt-16 h-8 w-full md:mt-24"
-        colorClassName="text-dark-blue/20"
+        colorClassName="text-light-red"
         animated={true}
       />
     </>

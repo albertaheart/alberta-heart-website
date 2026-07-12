@@ -1,75 +1,7 @@
-import { Fragment, type ReactNode } from "react";
+import { Fragment } from "react";
 import EkgTrace from "../../_components/ekg-trace";
-import { type StaticImageData } from "next/image";
 import Image from "next/image";
-import HeartHackathonImage from "../../../public/conferences/HeartHackathon.jpg";
-import ISMCSImage from "../../../public/conferences/ISMCS.jpg";
-import CUBECImage from "../../../public/conferences/CUBEC.jpg";
-import HeartHackathonFinalsImage from "../../../public/conferences/HeartHackathonFinals.jpg";
-
-type TimelineEntry = {
-  date: string;
-  location: string;
-  name: string;
-  description: ReactNode;
-  image: StaticImageData;
-  aspect?: string; // Tailwind aspect-ratio class, defaults to "aspect-[16/9]"
-};
-
-const EVENTS: TimelineEntry[] = [
-  {
-    date: "October 2025",
-    location: "Canmore, Alberta",
-    name: "Annual Biomedical Engineering Conference",
-    description:
-      "We brought our research closer to home, presenting our pumping mechanism innovations to regional researchers, mentors, and healthcare professionals at this student-focused interdisciplinary conference.",
-    image: CUBECImage,
-  },
-  {
-    date: "December 2025",
-    location: "Vienna, Austria",
-    name: "Heart Hackathon Finals",
-    description: (
-      <>
-        Alberta Heart sent three team members to the global finals as{" "}
-        <span className="font-semibold text-dark-blue/90">
-          the only Canadian team represented at the event.
-        </span>{" "}
-        We competed against international teams to pitch our total artificial
-        heart technologies.
-      </>
-    ),
-    image: HeartHackathonImage,
-  },
-  {
-    date: "December 2025",
-    location: "Vienna, Austria",
-    name: "ISMCS Conference",
-    description: (
-      <>
-        Our research abstract on the heart&apos;s pumping mechanism was selected
-        for a{" "}
-        <span className="font-semibold text-dark-blue/90">
-          poster presentation
-        </span>{" "}
-        at the International Society for Mechanical Circulatory Support (ISMCS)
-        conference, showcasing our findings to top global clinicians and
-        industry leaders.
-      </>
-    ),
-    image: ISMCSImage,
-    aspect: "aspect-[4/3]",
-  },
-  {
-    date: "Upcoming",
-    location: "Suzhou, China",
-    name: "Heart Hackathon Finals",
-    description:
-      "Building on our success, we are actively expanding our device capabilities to send an even larger delegation of members to compete at the next Heart Hackathon Finals.",
-    image: HeartHackathonFinalsImage,
-    aspect: "aspect-[4/3]",
-  },
-];
+import { EVENTS } from "./timeline";
 
 export default function GlobalImpactSection() {
   return (
