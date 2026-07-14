@@ -1,9 +1,21 @@
+import { type StaticImageData } from "next/image";
+import ArykaGordonImg from "../../public/team_members/project_leads/Aryka_Gordon.png";
+import HendrikDuvenhageImg from "../../public/team_members/project_leads/Hendrik_Duvenhage.png";
+import MatthewPierceImg from "../../public/team_members/electrical_and_embedded_systems_leads/Matthew_Pierce.png";
+import KiraJordanImg from "../../public/team_members/electrical_and_embedded_systems_leads/Kira_Jordan.png";
+import MatteaKrugImg from "../../public/team_members/pumping_mechanism_leads/Mattea_Krug.png";
+import ZohanChanImg from "../../public/team_members/mcl_leads/Zohan_Chan.png";
+import DanielMorozovImg from "../../public/team_members/mcl_leads/Daniel_Morozov.png";
+import CohenChanImg from "../../public/team_members/alberta_bot_leads/Cohen_Chan.png";
+import NatalieHuImg from "../../public/team_members/clinical_assurance_leads/Natalie_Hu.png";
+import KrishChahalImg from "../../public/team_members/clinical_assurance_leads/Krish_Chahal.png";
+
 export type Person = {
   name: string;
   imageLabel: string;
   blurb?: string;
-  /** Path under /public to a real photo. Falls back to Placeholder when omitted. */
-  imagePath?: string;
+  /** Real photo. Falls back to Placeholder when omitted. */
+  image?: StaticImageData;
 };
 
 export type Team = {
@@ -34,12 +46,13 @@ export const LEADERSHIP: Person[] = [
     name: "Aryka Gordon",
     imageLabel: "Portrait of Aryka Gordon, Project Manager",
     blurb: "Project Manager",
-    imagePath: "/team_members/project_manager/Aryka_Gordon.png",
+    image: ArykaGordonImg,
   },
   {
     name: "Henju Duvenhage",
     imageLabel: "Portrait of Henju Duvenhage, Project Advisor",
     blurb: "Project Advisor",
+    image: HendrikDuvenhageImg,
   },
 ];
 
@@ -69,8 +82,16 @@ export const TEAMS: Team[] = [
       },
     ],
     leads: [
-      { name: "Matt Priece", imageLabel: "Portrait of Matt Priece, Electrical Team Lead" },
-      { name: "Kira Jordan", imageLabel: "Portrait of Kira Jordan, Electrical Team Lead" },
+      {
+        name: "Matthew Pierce",
+        imageLabel: "Portrait of Matthew Pierce, Electrical Team Lead",
+        image: MatthewPierceImg,
+      },
+      {
+        name: "Kira Jordan",
+        imageLabel: "Portrait of Kira Jordan, Electrical Team Lead",
+        image: KiraJordanImg,
+      },
     ],
     imageLabel: "Electrical team working on control hardware and circuits",
     imageBgClass: "bg-electrical-light",
@@ -100,7 +121,11 @@ export const TEAMS: Team[] = [
       },
     ],
     leads: [
-      { name: "Mattea Krug", imageLabel: "Portrait of Mattea Krug, Pumping Mechanism Team Lead" },
+      { 
+        name: "Mattea Krug", 
+        imageLabel: "Portrait of Mattea Krug, Pumping Mechanism Team Lead", 
+        image: MatteaKrugImg 
+      },
     ],
     imageLabel: "Pump prototype on the workbench",
     imageBgClass: "bg-pumping-mechanism-light",
@@ -133,12 +158,12 @@ export const TEAMS: Team[] = [
       {
         name: "Zohan Chan",
         imageLabel: "Portrait of Zohan Chan, Mock Circulatory Loop Team Lead",
-        imagePath: "/team_members/mcl_leads/Zohan_Chan.png",
+        image: ZohanChanImg,
       },
       {
         name: "Daniel Morozov",
         imageLabel: "Portrait of Daniel Morozov, Mock Circulatory Loop Team Lead",
-        imagePath: "/team_members/mcl_leads/Daniel_Morozov.png",
+        image: DanielMorozovImg,
       },
     ],
     imageLabel: "Mock circulatory loop test rig running a pump prototype",
@@ -172,7 +197,7 @@ export const TEAMS: Team[] = [
       {
         name: "Cohen Chan",
         imageLabel: "Portrait of Cohen Chan, Alberta Bot Team Lead",
-        imagePath: "/team_members/alberta_bot_leads/Cohen_Chan.png",
+        image: CohenChanImg,
       },
     ],
     imageLabel: "Bot team members building internal software tooling",
@@ -210,12 +235,12 @@ export const TEAMS: Team[] = [
       {
         name: "Natalie Hu",
         imageLabel: "Portrait of Natalie Hu, Clinical Assurance Team Lead",
-        imagePath: "/team_members/clinical_assurance_leads/Natalie_Hu.png",
+        image: NatalieHuImg,
       },
       {
         name: "Krish Chahal",
         imageLabel: "Portrait of Krish Chahal, Clinical Assurance Team Lead",
-        imagePath: "/team_members/clinical_assurance_leads/Krish_Chahal.png",
+        image: KrishChahalImg,
       },
     ],
     imageLabel: "Clinical assurance team reviewing risk and validation documents",

@@ -4,9 +4,9 @@ import { type Person } from "../teams-data";
 
 /**
  * Avatar + name (and optional blurb) for a team lead or project lead.
- * Renders the real photo when `person.imagePath` is set, otherwise a Placeholder.
+ * Renders the real photo when `person.image` is set, otherwise a Placeholder.
  *
- * @param person - The person's name, image label, optional blurb, and optional photo path.
+ * @param person - The person's name, image label, optional blurb, and optional photo.
  * @param size - "lg" for leads, "sm" for project leads. Defaults to "sm".
  * @param accentTextClass - The team's accent color class, applied to the name so it visually ties to the "Team Lead" label above.
  * @returns A person card.
@@ -28,9 +28,9 @@ export default function PersonCard({
 
   return (
     <div className="flex items-center gap-4">
-      {person.imagePath ? (
+      {person.image ? (
         <div className={`relative shrink-0 overflow-hidden rounded-full ${dims}`}>
-          <Image src={person.imagePath} alt={person.imageLabel} fill className="object-cover" />
+          <Image src={person.image} alt={person.imageLabel} fill className="object-cover" />
         </div>
       ) : (
         <Placeholder
