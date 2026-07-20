@@ -175,7 +175,7 @@ export const TEAMS: Team[] = [
   },
   {
     index: "04",
-    name: "Alberta Bot",
+    name: "Alberta Heart Bot",
     tagline: "Software & Automation",
     description:
       "Builds the internal software tools and automation pipelines that streamline operations and accelerate innovation across the entire club.",

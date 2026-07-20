@@ -21,7 +21,7 @@ export default function GlobalImpactSection() {
       <div className="mt-14 grid grid-cols-[2rem_1fr] gap-x-8">
         {EVENTS.map((event, i) => {
           const isLast = i === EVENTS.length - 1;
-          const leadsToLast = i === EVENTS.length - 2;
+          const leadsToSecond = i === 0;
 
           return (
             <Fragment key={`${event.date}-${event.name}`}>
@@ -49,17 +49,17 @@ export default function GlobalImpactSection() {
               {/* Col 1: vertical line (or EKG), full height of body row */}
               <div className="flex justify-center">
                 {!isLast ? (
-                  leadsToLast ? (
+                  leadsToSecond ? (
                     <EkgTrace
                       vertical
                       animated
                       className="h-full w-4"
-                      colorClassName="text-light-red/40"
+                      colorClassName="text-light-red"
                       strokeWidth={0.5}
                       duration="3s"
                     />
                   ) : (
-                    <span className="h-full w-px bg-light-red/20" />
+                    <span className="h-full w-px bg-light-red/40" />
                   )
                 ) : null}
               </div>
